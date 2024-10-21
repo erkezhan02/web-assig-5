@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KinoTime</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style_contact.css">
+    <link rel="icon" href="img/cinema.png" type="image/x-icon">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <a class="navbar-brand" href="index.html" style="color: grey;">KinoTime</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html" style="color: grey;">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="review.html" style="color: grey;">Reviews</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="releases.html" style="color: grey;">Upcoming Releases</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html" style="color: grey;">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="row">
+        <div class="col-lg-6">
+          <img src="img/logo.png" alt="Logo" class="img-fluid d-block">
+        </div>
+        <div class="col-lg-6">
+          <div class="container">
+            <form id="Form1">
+              <h3>CONTACT US</h3>
+              <div class="line"></div>
+              <input type="text" placeholder="Email" required>
+              <input type="text" placeholder="User name" required>
+              <textarea rows="5" placeholder="Message" required></textarea>
+              <div class="btn-box">
+                <button type="button" id="Next1">Next</button>
+              </div>
+            </form>
+    
+            <form id="Form2">
+              <h3>PERSONAL INFO</h3>
+              <div class="line"></div>
+              <input type="text" placeholder="Name" required>
+              <input type="text" placeholder="Surname" required>
+              <textarea rows="5" placeholder="Additional information" required></textarea>
+              <div class="btn-box">
+                <button type="button" id="Back1">Back</button>
+                <button type="button" id="Next2">Next</button>
+              </div>
+            </form>
+    
+            <form id="Form3">
+              <h3>SOCIAL LINKS</h3>
+              <div class="line"></div>
+              <input type="text" placeholder="Instagram" required>
+              <input type="text" placeholder="Telegram" required>
+              <textarea rows="5" placeholder="Another social links" required></textarea>
+              <div class="btn-box">
+                <button type="button" id="Back2">Back</button>
+                <button type="submit">Submit</button>
+              </div>
+            </form>
+    
+            <div class="step-row">
+              <div id="progress"></div>
+              <div class="step-col"><small>Step 1</small></div>
+              <div class="step-col"><small>Step 2</small></div>
+              <div class="step-col"><small>Step 3</small></div>
+            </div>
+    
+          </div>
+        </div>
+      </div>
+    
+    <footer>
+        <div class="footer-content">
+            <p>© 2024 KinoTime. Created by:</p>
+            <ul>
+                <li>Yerkezhan Akhmetova</li>
+                <li>Akmagambetova Aliya</li>
+            </ul>
+        </div>
+    </footer>
+    
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Отменяем стандартное поведение отправки формы
+
+            const firstName = document.getElementById("FirstName").value.trim();
+            const lastName = document.getElementById("LastName").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+            const message = document.getElementById("message").value.trim();
+            const errorMessages = [];
+
+            // Проверка обязательных полей
+            if (!firstName) {
+                errorMessages.push("First Name is required.");
+            }
+            if (!lastName) {
+                errorMessages.push("Last Name is required.");
+            }
+            if (!email) {
+                errorMessages.push("Email is required.");
+            } else if (!validateEmail(email)) {
+                errorMessages.push("Please enter a valid email address.");
+            }
+            if (!phone) {
+                errorMessages.push("Phone number is required.");
+            }
+            if (!message) {
+                errorMessages.push("Message is required.");
+            }
+
+            // Отображение ошибок или успешная отправка
+            const errorMessagesDiv = document.getElementById("errorMessages");
+            errorMessagesDiv.innerHTML = ""; // Очистка предыдущих сообщений об ошибках
+
+            if (errorMessages.length > 0) {
+                errorMessages.forEach(function(error) {
+                    const p = document.createElement("p");
+                    p.textContent = error;
+                    errorMessagesDiv.appendChild(p);
+                });
+            } else {
+                // Если нет ошибок, можно отправить форму (или выполнить другие действия)
+                alert("Form submitted successfully!");
+             
+            }
+        });
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Регулярное выражение для проверки формата email
+            return re.test(String(email).toLowerCase());
+        }
+    </script>
+</body>
+<script>
+    /* keydown*/
+    document.addEventListener('keydown', (event) => {
+      const key = event.key;
+    
+      switch (key) {
+        case '1':
+          
+          window.location.href = 'index.html';
+          break;
+        case '2':
+          
+          window.location.href = 'review.html';
+          break;
+        case '3':
+          
+          window.location.href = 'releases.html';
+          break;
+        case '4':
+          
+          window.location.href = 'contact.html';
+          break;
+        default:
+          break;
+      }
+    });
+    </script>
+
+    <script>
+        // Form
+var Form1 = document.getElementById("Form1");
+var Form2 = document.getElementById("Form2");
+var Form3 = document.getElementById("Form3");
+
+var Next1 = document.getElementById("Next1");
+var Next2 = document.getElementById("Next2");
+var Back1 = document.getElementById("Back1");
+var Back2 = document.getElementById("Back2");
+
+var progress = document.getElementById("progress");
+
+Next1.onclick = function(){
+  Form1.style.left = "-560px";
+  Form2.style.left = "50px";
+  progress.style.width = "334px";
+}
+Back1.onclick = function(){
+  Form1.style.left = "50px";
+  Form2.style.left = "560px";
+  progress.style.width = "167px";
+}
+Next2.onclick = function(){
+  Form2.style.left = "-560px";
+  Form3.style.left = "50px";
+  progress.style.width = "501px";
+}
+Back2.onclick = function(){
+  Form2.style.left = "50px";
+  Form3.style.left = "560px";
+  progress.style.width = "334px";
+}
+    </script>
+</html>
